@@ -3,10 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Notely</title>
+    <link th:href="@{/styles/home.css}" rel="stylesheet">
+    <script th:src="@{/js/home.js}" defer></script>
 </head>
 <body>
-<h1>Notely</h1>
-<p>We will eventually have a piano on this page.</p>
-<p>Who knows, maybe it'll appear today.</p>
+<nav class="center">
+    <h1>Notely</h1>
+</nav>
+<div class="notes">
+    <!--                          key    note -->
+    <button class="note note-white 1" id="c2" ></button>
+    <button class="note note-black !" id="c2s"></button>
+    <button class="note note-white 2" id="d2" ></button>
+    <button class="note note-black @" id="d2s" ></button>
+    <button class="note note-white 3" id="e2" ></button>
+    <button class="note note-white 4" id="f2" ></button>
+    <button class="note note-black $" id="f2s" ></button>
+    <button class="note note-white 5" id="g2" ></button>
+    <button class="note note-black %" id="g2s" ></button>
+    <button class="note note-white 6" id="a2" ></button>
+    <button class="note note-black ^" id="a2s" ></button>
+    <button class="note note-white 7" id="b2" ></button>
+    <button class="note note-white 8" id="c3" ></button>
+    <button class="note note-black *" id="c3s" ></button>
+    <button class="note note-white 9" id="d3" ></button>
+    <button class="note note-black (" id="d3s" ></button>
+    <button class="note note-white 0" id="e3" ></button>
+    <button class="note note-white q" id="f3" ></button>
+    <button class="note note-black Q" id="f3s" ></button>
+    <button class="note note-white w" id="g3" ></button>
+    <button class="note note-black W" id="g3s" ></button>
+    <button class="note note-white e" id="a3" ></button>
+    <button class="note note-black E" id="a3s" ></button>
+    <button class="note note-white r" id="b3" ></button>
+    <button class="note note-white t" id="c4" ></button>
+    <button class="note note-black T" id="c4s" ></button>
+    <button class="note note-white y" id="d4" ></button>
+    <button class="note note-black Y" id="d4s" ></button>
+    <button class="note note-white u" id="e4" ></button>
+    <button class="note note-white i" id="f4" ></button>
+    <button class="note note-black I" id="f4s" ></button>
+    <button class="note note-white o" id="g4" ></button>
+    <button class="note note-black O" id="g4s" ></button>
+    <button class="note note-white p" id="a4" ></button>
+    <button class="note note-black P" id="a4s" ></button>
+    <button class="note note-white a" id="b4" ></button>
+    <button class="note note-white s" id="c5" ></button>
+    <button class="note note-black S" id="c5s" ></button>
+    <button class="note note-white d" id="d5" ></button>
+    <button class="note note-black D" id="d5s" ></button>
+    <button class="note note-white f" id="e5" ></button>
+    <button class="note note-white g" id="f5" ></button>
+    <button class="note note-black G" id="f5s" ></button>
+    <button class="note note-white h" id="g5" ></button>
+    <button class="note note-black H" id="g5s" ></button>
+    <button class="note note-white j" id="a5" ></button>
+    <button class="note note-black J" id="a5s" ></button>
+    <button class="note note-white k" id="b5" ></button>
+    <button class="note note-white l" id="c6" ></button>
+    <button class="note note-black L" id="c6s" ></button>
+    <button class="note note-white z" id="d6" ></button>
+    <button class="note note-black Z" id="d6s" ></button>
+    <button class="note note-white x" id="e6" ></button>
+    <button class="note note-white c" id="f6" ></button>
+    <button class="note note-black C" id="f6s" ></button>
+    <button class="note note-white v" id="g6" ></button>
+    <button class="note note-black V" id="g6s" ></button>
+    <button class="note note-white b" id="a6" ></button>
+    <button class="note note-black B" id="a6s" ></button>
+    <button class="note note-white n" id="b6" ></button>
+    <button class="note note-white m" id="c7" ></button>
+</div>
+<div id="ghost-play-header">
+    <h3 id="ghostTitle">Ghost Play</h3>
+    <p>|</p>
+    <p id="ghost-play-time">--:--</p>
+</div>
+<div class="ghostplay">
+    <select name="songs" id="song-list">
+        <option value="None">None</option>
+        <option value="Sweden">Sweden</option>
+        <option value="Wet-Hands">Wet Hands</option>
+        <option value="Married-Life">Married Life</option>
+        <option value="Damned">Damned</option>
+        <option value="Unforgiven">Unforgiven</option>
+    </select>
+    <textarea
+            spellCheck="false"
+            id="ghost-play-input"
+            rows="16"
+            cols="72"
+    ></textarea>
+    <div id="instructions">
+        <ul>
+            <li>Group Notes with [ ]</li>
+            <li>" " = 50ms rest</li>
+            <li>"," = 100ms rest</li>
+            <li>"." = 250ms rest</li>
+            <li>"/" = 500ms rest</li>
+            <li>"|" = 1000ms rest</li>
+        </ul>
+    </div>
+</div>
+<div class="center">
+    <button id="ghost-play-button">Play</button>
+</div>
 </body>
 </html>
