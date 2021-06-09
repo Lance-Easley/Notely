@@ -26,19 +26,22 @@ Another website, virtualpiano.net, has something similar, with users being able 
 ### Week 1:
 
 Create 'Main page' with piano and ghost play. 
+I'll also add the javascript to make them work properly.
 Complete Milestone 1.
 
 ### Week 2:
 
-Store multiple songs for ghost play in database and create list/detail views for songs.
+Store multiple songs for ghost play in database and create list/detail pages for songs.
 Complete Milestone 2
 
 ### Week 3:
 
 Create welcome page and set up login/logout/signup logic. 
+Make a navbar on the site that will hold login prompts and links to login pages. 
+I'll also look into ways to store passwords securely.
 Complete Milestone 3
 
 ### Week 4-5:
 
-Set up public/private song logic, add user pages, add unique constraints to music sheets, and spiffy up the website (styling).
+Set up user created songs with public/private song logic, add user pages to view user info and songs, add unique constraints to user created music sheets, and spiffy up the website (styling).
 Complete Milestone "4".
