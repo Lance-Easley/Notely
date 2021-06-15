@@ -13,12 +13,8 @@ code {
 
 .center {
     display: flex;
-    justify-content: center;
-}
-
-nav {
-    background-color: #0044FF;
-    color: white;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #options {

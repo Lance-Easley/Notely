@@ -4,82 +4,81 @@
     <meta charset="UTF-8">
     <title>Notely</title>
     <link th:href="@{/styles/home.css}" rel="stylesheet">
+    <link th:href="@{/styles/main_navbar.css}" rel="stylesheet">
     <script th:src="@{/js/home.js}" defer></script>
 </head>
 <body>
-<nav class="center">
-    <h1>Notely</h1>
-</nav>
+<section th:replace="fragments/main_navbar.html"></section>
 <div class="notes">
     <!--                          key    note -->
-    <button class="note note-white 1" id="c2" ></button>
-    <button class="note note-black !" id="c2s"></button>
-    <button class="note note-white 2" id="d2" ></button>
-    <button class="note note-black @" id="d2s" ></button>
-    <button class="note note-white 3" id="e2" ></button>
-    <button class="note note-white 4" id="f2" ></button>
-    <button class="note note-black $" id="f2s" ></button>
-    <button class="note note-white 5" id="g2" ></button>
-    <button class="note note-black %" id="g2s" ></button>
-    <button class="note note-white 6" id="a2" ></button>
-    <button class="note note-black ^" id="a2s" ></button>
-    <button class="note note-white 7" id="b2" ></button>
-    <button class="note note-white 8" id="c3" ></button>
-    <button class="note note-black *" id="c3s" ></button>
-    <button class="note note-white 9" id="d3" ></button>
-    <button class="note note-black (" id="d3s" ></button>
-    <button class="note note-white 0" id="e3" ></button>
-    <button class="note note-white q" id="f3" ></button>
-    <button class="note note-black Q" id="f3s" ></button>
-    <button class="note note-white w" id="g3" ></button>
-    <button class="note note-black W" id="g3s" ></button>
-    <button class="note note-white e" id="a3" ></button>
-    <button class="note note-black E" id="a3s" ></button>
-    <button class="note note-white r" id="b3" ></button>
-    <button class="note note-white t" id="c4" ></button>
-    <button class="note note-black T" id="c4s" ></button>
-    <button class="note note-white y" id="d4" ></button>
-    <button class="note note-black Y" id="d4s" ></button>
-    <button class="note note-white u" id="e4" ></button>
-    <button class="note note-white i" id="f4" ></button>
-    <button class="note note-black I" id="f4s" ></button>
-    <button class="note note-white o" id="g4" ></button>
-    <button class="note note-black O" id="g4s" ></button>
-    <button class="note note-white p" id="a4" ></button>
-    <button class="note note-black P" id="a4s" ></button>
-    <button class="note note-white a" id="b4" ></button>
-    <button class="note note-white s" id="c5" ></button>
-    <button class="note note-black S" id="c5s" ></button>
-    <button class="note note-white d" id="d5" ></button>
-    <button class="note note-black D" id="d5s" ></button>
-    <button class="note note-white f" id="e5" ></button>
-    <button class="note note-white g" id="f5" ></button>
-    <button class="note note-black G" id="f5s" ></button>
-    <button class="note note-white h" id="g5" ></button>
-    <button class="note note-black H" id="g5s" ></button>
-    <button class="note note-white j" id="a5" ></button>
-    <button class="note note-black J" id="a5s" ></button>
-    <button class="note note-white k" id="b5" ></button>
-    <button class="note note-white l" id="c6" ></button>
-    <button class="note note-black L" id="c6s" ></button>
-    <button class="note note-white z" id="d6" ></button>
-    <button class="note note-black Z" id="d6s" ></button>
-    <button class="note note-white x" id="e6" ></button>
-    <button class="note note-white c" id="f6" ></button>
-    <button class="note note-black C" id="f6s" ></button>
-    <button class="note note-white v" id="g6" ></button>
-    <button class="note note-black V" id="g6s" ></button>
-    <button class="note note-white b" id="a6" ></button>
-    <button class="note note-black B" id="a6s" ></button>
-    <button class="note note-white n" id="b6" ></button>
-    <button class="note note-white m" id="c7" ></button>
+    <button class="note note-white 1" id="c2" >1</button>
+    <button class="note note-black !" id="c2s">!</button>
+    <button class="note note-white 2" id="d2" >2</button>
+    <button class="note note-black @" id="d2s">@</button>
+    <button class="note note-white 3" id="e2" >3</button>
+    <button class="note note-white 4" id="f2" >4</button>
+    <button class="note note-black $" id="f2s">$</button>
+    <button class="note note-white 5" id="g2" >5</button>
+    <button class="note note-black %" id="g2s">%</button>
+    <button class="note note-white 6" id="a2" >6</button>
+    <button class="note note-black ^" id="a2s">^</button>
+    <button class="note note-white 7" id="b2" >7</button>
+    <button class="note note-white 8" id="c3" >8</button>
+    <button class="note note-black *" id="c3s">*</button>
+    <button class="note note-white 9" id="d3" >9</button>
+    <button class="note note-black (" id="d3s">(</button>
+    <button class="note note-white 0" id="e3" >0</button>
+    <button class="note note-white q" id="f3" >q</button>
+    <button class="note note-black Q" id="f3s">Q</button>
+    <button class="note note-white w" id="g3" >w</button>
+    <button class="note note-black W" id="g3s">W</button>
+    <button class="note note-white e" id="a3" >e</button>
+    <button class="note note-black E" id="a3s">E</button>
+    <button class="note note-white r" id="b3" >r</button>
+    <button class="note note-white t" id="c4" >t</button>
+    <button class="note note-black T" id="c4s">T</button>
+    <button class="note note-white y" id="d4" >y</button>
+    <button class="note note-black Y" id="d4s">Y</button>
+    <button class="note note-white u" id="e4" >u</button>
+    <button class="note note-white i" id="f4" >i</button>
+    <button class="note note-black I" id="f4s">I</button>
+    <button class="note note-white o" id="g4" >o</button>
+    <button class="note note-black O" id="g4s">O</button>
+    <button class="note note-white p" id="a4" >p</button>
+    <button class="note note-black P" id="a4s">P</button>
+    <button class="note note-white a" id="b4" >a</button>
+    <button class="note note-white s" id="c5" >s</button>
+    <button class="note note-black S" id="c5s">S</button>
+    <button class="note note-white d" id="d5" >d</button>
+    <button class="note note-black D" id="d5s">D</button>
+    <button class="note note-white f" id="e5" >f</button>
+    <button class="note note-white g" id="f5" >g</button>
+    <button class="note note-black G" id="f5s">G</button>
+    <button class="note note-white h" id="g5" >h</button>
+    <button class="note note-black H" id="g5s">H</button>
+    <button class="note note-white j" id="a5" >j</button>
+    <button class="note note-black J" id="a5s">J</button>
+    <button class="note note-white k" id="b5" >k</button>
+    <button class="note note-white l" id="c6" >l</button>
+    <button class="note note-black L" id="c6s">L</button>
+    <button class="note note-white z" id="d6" >z</button>
+    <button class="note note-black Z" id="d6s">Z</button>
+    <button class="note note-white x" id="e6" >x</button>
+    <button class="note note-white c" id="f6" >c</button>
+    <button class="note note-black C" id="f6s">C</button>
+    <button class="note note-white v" id="g6" >v</button>
+    <button class="note note-black V" id="g6s">V</button>
+    <button class="note note-white b" id="a6" >b</button>
+    <button class="note note-black B" id="a6s">B</button>
+    <button class="note note-white n" id="b6" >n</button>
+    <button class="note note-white m" id="c7" >m</button>
 </div>
 <div id="ghost-play-header">
     <h3 id="ghostTitle">Ghost Play</h3>
     <p>|</p>
     <p id="ghost-play-time">--:--</p>
 </div>
-<div class="ghostplay">
+<div class="ghostplay" th:object="${sheetText}">
     <select name="songs" id="song-list">
         <option value="None">None</option>
         <option value="Sweden">Sweden</option>
@@ -93,6 +92,7 @@
             id="ghost-play-input"
             rows="16"
             cols="72"
+            th:text="${sheetText}"
     ></textarea>
     <div id="instructions">
         <ul>

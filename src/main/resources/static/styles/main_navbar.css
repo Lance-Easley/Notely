@@ -1,0 +1,11 @@
+nav {
+    background-color: #0044FF;
+    color: white;
+}
+
+nav a {
+    background-color: #0044FF;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}

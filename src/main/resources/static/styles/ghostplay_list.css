@@ -1,0 +1,19 @@
+td {
+    padding: 0 !important;
+}
+
+.list-row:hover {
+    background: #DDDDDD !important;
+}
+
+td a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+td a:hover {
+    text-decoration: none;
+    color: black;
+}
