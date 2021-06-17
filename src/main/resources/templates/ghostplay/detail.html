@@ -11,9 +11,11 @@
 <body>
 <section th:replace="fragments/main_navbar.html"></section>
 <div class="container text-center" th:object="${sheet}">
-    <div th:object="${authorName}">
-        <h1 th:text="${sheet.title}"></h1>
-        <p th:text="${authorName}"></p>
+    <div th:object="${author}">
+        <div th:object="${authorName}">
+            <h1 th:text="${sheet.title}"></h1>
+            <a class="user-link" th:text="${authorName}" th:href="@{/user/{id}(id=${author.id})}"></a>
+        </div>
     </div>
     <div>
         <p th:text="${sheet.textContent}"></p>

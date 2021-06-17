@@ -17,3 +17,12 @@ td a:hover {
     text-decoration: none;
     color: black;
 }
+
+th {
+    background-color: #0044FF !important;
+    border: 0px solid #0044FF;
+}
+
+thead {
+    border: 0px solid #0044FF;
+}

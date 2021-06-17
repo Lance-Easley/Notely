@@ -1,4 +1,17 @@
-<nav class="center">
-    <h1>Notely</h1>
-    <a th:href="@{/user/ghostplay}">Ghostplay Sheets</a>
+<nav>
+    <div class="nav-section">
+        <h2>Notely</h2>
+        <a th:href="@{/user/play}">Play</a>
+        <a th:href="@{/user/ghostplay}">Ghostplay Sheets</a>
+        <a th:href="@{/user/ghostplay/create}">Create Sheet</a>
+    </div>
+    <div class="nav-section">
+        <div class="anon-section" sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">Login</a>
+            <a th:href="@{/register}">Sign Up</a>
+        </div>
+        <div class="auth-section" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}">Log Out</a>
+        </div>
+    </div>
 </nav>

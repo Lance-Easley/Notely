@@ -74,7 +74,26 @@ public class AppController {
         List<User> listUsers = (List<User>) userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
 
-        return "users";
+        return "user/users";
+    }
+
+    @GetMapping("/user/{id}")
+    public String userDetail(@PathVariable("id") long id, Model model) {
+        Optional<User> possibleUser = userRepo.findById(id);
+
+        User user;
+
+        if (possibleUser.isPresent()) {
+            user = possibleUser.get();
+            model.addAttribute("viewedUser", user);
+
+            List<GhostPlaySheet> listSheets = ghostPlayRepo.findByAuthorId(id);
+            model.addAttribute("listSheets", listSheets);
+
+            return "user/detail";
+        }
+
+        return "user/user_not_exist";
     }
 
     @GetMapping("/user/delete_account")
@@ -125,8 +144,6 @@ public class AppController {
         ghostPlaySheet.setAuthorId(userDetails.getId());
         ghostPlayRepo.save(ghostPlaySheet);
 
-        System.out.println(ghostPlaySheet.toString());
-
         return "ghostplay/create_success";
     }
 
@@ -145,12 +162,13 @@ public class AppController {
             if (possibleAuthor.isPresent()) {
                 User author = possibleAuthor.get();
 
+                model.addAttribute("author", author);
                 model.addAttribute("authorName", author.getFirstName() + " " + author.getLastName());
 
                 return "ghostplay/detail";
             }
         }
 
-        return "ghostplay/sheet_not_exist.html";
+        return "ghostplay/sheet_not_exist";
     }
 }

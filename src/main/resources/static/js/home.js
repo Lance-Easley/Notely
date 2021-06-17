@@ -426,7 +426,6 @@ let pianoSoundPack = "piano"
 function preloadNotes() {
   for (const note of pianoNotes) {
     const sound = new Audio(`/js/piano/${note.id}.ogg`);
-    console.log(note.id)
     sound.volume = 0;
     safePlay(sound);
   }
@@ -610,8 +609,4 @@ ghostPlayButton.addEventListener("click", () => {
     ghostPlayButton.innerText = "Play";
     ghostPlayTimeContainer.innerText = "--:--"
   }
-})
-
-document.getElementById("song-list").addEventListener("input", (Event) => {
-  ghostPlayInput.value = songs[Event.target.value] ?? "Cannot fetch song"
 })
