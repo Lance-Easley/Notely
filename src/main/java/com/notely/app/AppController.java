@@ -2,12 +2,9 @@ package com.notely.app;
 
 import com.notely.app.models.GhostPlaySheet;
 import com.notely.app.models.User;
-import com.notely.app.repository.GhostPlaySheetsRepository;
-import com.notely.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class AppController {
 
     @Autowired
-    private UserRepository userRepo;
+    private CustomUserDetailsService userService;
 
     @Autowired
-    private GhostPlaySheetsRepository ghostPlayRepo;
+    private GhostPlaySheetsDetailsService ghostPlayService;
 
     @GetMapping("")
     public String viewHomePage() {
@@ -37,15 +33,7 @@ public class AppController {
     @GetMapping("/user/play")
     public String viewPianoPage(@RequestParam(name = "id", required = false) Long sheetId, Model model) {
         if (sheetId != null) {
-            Optional<GhostPlaySheet> possibleSheet = ghostPlayRepo.findById(sheetId);
-
-            // If sheetId is passed through, find sheet and pass to ghost play
-            if (possibleSheet.isPresent()) {
-                model.addAttribute("sheetText", possibleSheet.get().getTextContent());
-            } else {
-                // If the sheet does not exist, pass empty string to ghost play (avoids thymeleaf rendering error)
-//                model.addAttribute("sheetText", "");
-            }
+            model.addAttribute("sheetText", ghostPlayService.getTextContentById(sheetId));
         }
 
         return "home";
@@ -60,26 +48,25 @@ public class AppController {
 
     @PostMapping("/process_register")
     public String processRegister(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-
-        userRepo.save(user);
+        userService.encryptAndSaveUser(user);
 
         return "registry/register_success";
     }
 
     @GetMapping("/user/users")
     public String listUsers(Model model) {
-        List<User> listUsers = (List<User>) userRepo.findAll();
-        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("listUsers", userService.getAllUsers());
 
         return "user/users";
     }
 
     @GetMapping("/user/{id}")
-    public String userDetail(@PathVariable("id") long id, Model model) {
-        Optional<User> possibleUser = userRepo.findById(id);
+    public String userDetail(
+            @PathVariable("id") long id,
+            Model model,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        Optional<User> possibleUser = userService.getUserById(id);
 
         User user;
 
@@ -87,8 +74,7 @@ public class AppController {
             user = possibleUser.get();
             model.addAttribute("viewedUser", user);
 
-            List<GhostPlaySheet> listSheets = ghostPlayRepo.findByAuthorId(id);
-            model.addAttribute("listSheets", listSheets);
+            model.addAttribute("listSheets", ghostPlayService.getSheetsByAuthorId(id, userDetails.getId()));
 
             return "user/detail";
         }
@@ -106,11 +92,9 @@ public class AppController {
             @AuthenticationPrincipal CustomUserDetails userDetails,
             Model model,
             HttpServletRequest request) {
-        String userEmail = userDetails.getUsername();
-        User user = userRepo.findByEmail(userEmail);
+        userService.deleteByEmail(userDetails.getUsername());
 
-        userRepo.delete(user);
-
+        // Log out user on delete
         HttpSession session = request.getSession();
         session.invalidate();
         SecurityContextHolder.clearContext();
@@ -119,19 +103,18 @@ public class AppController {
     }
 
     @GetMapping("user/ghostplay")
-    public String listSheets(Model model) {
-        List<GhostPlaySheet> listSheets = (List<GhostPlaySheet>) ghostPlayRepo.findAll();
-
-        listSheets = listSheets.stream().filter(GhostPlaySheet::getIsPublic).toList();
-
-        model.addAttribute("listSheets", listSheets);
+    public String listSheets(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+        model.addAttribute("listSheets", ghostPlayService.getAllFilteredSheets(userDetails.getId()));
 
         return "ghostplay/list";
     }
 
     @GetMapping("user/ghostplay/create")
-    public String createSheet(Model model) {
-        model.addAttribute("sheet", new GhostPlaySheet());
+    public String createSheet(@RequestParam(name = "text", required = false) String textCont, Model model) {
+        GhostPlaySheet sheet = new GhostPlaySheet();
+        sheet.setTextContent(textCont);
+
+        model.addAttribute("sheet", sheet);
 
         return "ghostplay/create";
     }
@@ -141,15 +124,18 @@ public class AppController {
             GhostPlaySheet ghostPlaySheet,
             @AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        ghostPlaySheet.setAuthorId(userDetails.getId());
-        ghostPlayRepo.save(ghostPlaySheet);
+        ghostPlayService.saveSheet(ghostPlaySheet, userDetails.getId());
 
         return "ghostplay/create_success";
     }
 
     @GetMapping("user/ghostplay/{id}")
-    public String sheetDetail(@PathVariable("id") long id, Model model) {
-        Optional<GhostPlaySheet> possibleSheet = ghostPlayRepo.findById(id);
+    public String sheetDetail(
+            @PathVariable("id") long id,
+            Model model,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        Optional<GhostPlaySheet> possibleSheet = ghostPlayService.getSheetById(id);
 
         GhostPlaySheet sheet;
 
@@ -157,18 +143,79 @@ public class AppController {
             sheet = possibleSheet.get();
             model.addAttribute("sheet", sheet);
 
-            Optional<User> possibleAuthor = userRepo.findById(sheet.getAuthorId());
+            Optional<User> possibleAuthor = userService.getUserById(sheet.getAuthorId());
 
             if (possibleAuthor.isPresent()) {
                 User author = possibleAuthor.get();
 
                 model.addAttribute("author", author);
-                model.addAttribute("authorName", author.getFirstName() + " " + author.getLastName());
+                model.addAttribute("authorName", userService.getFullName(author));
 
+                if (sheet.getAuthorId() == userDetails.getId()) {
+                    return "ghostplay/detail_with_edit";
+                }
                 return "ghostplay/detail";
             }
         }
 
         return "ghostplay/sheet_not_exist";
+    }
+
+    @GetMapping("user/ghostplay/{id}/edit")
+    public String sheetEdit(
+            @PathVariable("id") long id,
+            Model model,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        Optional<GhostPlaySheet> possibleSheet = ghostPlayService.getSheetById(id);
+
+        if (possibleSheet.isPresent()) {
+            GhostPlaySheet sheet = possibleSheet.get();
+            model.addAttribute("sheet", sheet);
+
+            if (sheet.getAuthorId() == userDetails.getId()) {
+                return "ghostplay/edit";
+            }
+
+            return "ghostplay/cannot_edit_sheet";
+        }
+
+        return "ghostplay/sheet_not_exist";
+    }
+
+    @PostMapping("user/ghostplay/{id}/edit_success")
+    public String sheetEdit(@PathVariable("id") long id, GhostPlaySheet sheet) {
+        ghostPlayService.updateSheet(id, sheet);
+
+        return "ghostplay/edit_success";
+    }
+
+    @GetMapping("user/ghostplay/{id}/delete")
+    public String sheetDelete(
+            @PathVariable("id") long id,
+            Model model,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        Optional<GhostPlaySheet> possibleSheet = ghostPlayService.getSheetById(id);
+
+        if (possibleSheet.isPresent()) {
+            GhostPlaySheet sheet = possibleSheet.get();
+            model.addAttribute("sheet", sheet);
+
+            if (sheet.getAuthorId() == userDetails.getId()) {
+                return "ghostplay/delete";
+            }
+
+            return "ghostplay/cannot_delete_sheet";
+        }
+
+        return "ghostplay/sheet_not_exist";
+    }
+
+    @PostMapping("user/ghostplay/{id}/delete_success")
+    public String sheetDeleteSuccess(@PathVariable("id") long id, GhostPlaySheet sheet) {
+        ghostPlayService.deleteSheet(sheet);
+
+        return "ghostplay/edit_success";
     }
 }

@@ -6,6 +6,7 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 5vh;
 }
 
 .nav-section a, .anon-section a, .auth-section a {
@@ -42,4 +43,21 @@ nav h2 {
     align-items: center;
     margin: 0;
     padding: 0;
+}
+
+nav p {
+    color: white;
+    margin: 0 1rem;
+}
+
+nav b {
+    color: white;
+    margin: 0;
+}
+
+.auth-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

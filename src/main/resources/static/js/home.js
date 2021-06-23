@@ -206,204 +206,11 @@ const acceptedGhostKeys = [
 
 const timeouts = [];
 
-const songs = {
-  None: "",
-  Sweden: `[6et]|7|[8yo]|0|[9r]|8|[I5y]||
-[6etu]|7|[8yoa]|0|[I9ry]|8|[I5yp]||
-[6etu]|7|[8yoa]|0|[I9ry]|8|[I5yp]||
-[6etu]|[7d]/f/[8yoa]|0/o.p.[I9ry]|8/a.d.[I5yp]||
-[6etu]/h/[7f]/d/[8yoa]|0/o.p.[I9ry]|8/d.a.[I5yp]||
-[6etu]|[7d]/f/[8yoah]|0/[ok].[pj].[I9ry]|8/[ah].G.[I5ypd]||
-[6etu]|[7d]/f/[8yoa]|0/o.p.[I9ry]|8/a.d.[I5yp]||
-[6etu]|[7d]/f/[8yoa]|0/o.p.[I9ry]|8/a.d.[I5yp]||
-[6etu]|[7d]/f/[8yoa]|0/o.p.[I9ry]|[8k]/a.d.[I5yp]||
-[0uoa]||f/d/[T6eup]|p/o/[I9ey]||o.p.[8wtu]||
-[0uoa]||f/d/[T6eup]|p/[oj]/[I9ey]|h/[ok].p.[wtu]`,
-
-  "Wet-Hands": `6,,,0,,,e,,,r,,,T,,,r,,,e,,,0,,,9,,,Q,,,T,,,u,,,T,,,e|
-6,,,0,,,e,,,r,,,T,,,r,,,e,,,0,,,9,,,Q,,,T,,,u,,,T,,,e|
-[6O],,,0,,,e,,,r,,,T,,,r,,,[pe],,,0,,,[I9],,,Q,,,T,,,u,,,T,,,e,,,
-u,,,I,,,[6O],,,0,,,e,,,r,,,T,,,r,,,[ea],,,[S0],,,9,,,[QI],,,T,,,u,,,T,,,e,,,
-S,,,f,,,[h5],,,7,,,9,,,[GQ],,,[ed],,,Q,,,[9p],,,[7a],,,5,,,7,,,9,,,Q,,,e|/
-[h5],,,7,,,[G9],,,Q,,,[ed],,,Q,,,[9p],,,[7a],,,5,,,7,,,9,,,Q,,,e/,,,
-p/,,,[6u],,,0,,,e,,,r,,,T,,,r,,,e,,,0,,,6,,,0,,,e,,,r,,,T,,,
-u,,,p,,,S|/,,,[7yd],,,9,,,Q,,,S,,,p/,,[uf],,,[IG],,,7,,,[9yd],,,Q,,,e,,,T/
-p,,,S,,,[5d],,,7,,,S,,,d,,,e,,,G|[Sue06]||/r,,,e,,,
-[3r],,,%,,,7,,,0,,,W,,,0,,,7,,,%,,,
-3,,,%,,,7,,,0,,,W,,,0,,,6,,,5,,,7,,,9,,,Q,,,e,,,Q,,,9,,,7,,,6,,,*,,,0,,,e,,,T,,,r,,,e,,,0,,,
-3,,,%,,,7,,,0,,,W,,,0,,,7,,,%,,,3,,,%,,,7,,,0,,,W,`,
-
-  "Married-Life": `q.[et].[et].
-8.[et].[et].
-9.[et].[et].
-8.9,g,[0j],g,
-[qf].[et].[et].
-8.[et],g,[etj],f,
-[9d].[et],d,[etg],d,
-[8s].[et].[et],d,
-[7j].[9qwh].[9qw],d,
-[7j].[9qwh].[9qwg].
-[7d].[9qw].[9qw].
-7.[9qw],g,[9qwh],g,
-[0f].[wt].[wt].
-9.[wt],f,[wth],f,
-[8s].[0w],s,[0wf],s,
-[^P].[0w],P,[0ws],P,
-q.[etp].[etP].
-[qs].[et],d,[etf].
-8.[0ws].[0wd].
-[80wf].g,j,g,
-[qf].[et].[et].
-8.[et],g,[etj],f,
-[9d].[et],d,[etg],d,
-[8s].[et].[et],d,
-[7j].[9qwh].[9qw],d,
-[7j].[9qwh].f.[9qwg].
-[7d].[9qw].[9qw].
-7.[9qw],g,[9qwh],g,
-[0f].[wt].[wt].
-9.[wt],f,[wth],f,
-[8s].[0w],s,[0wf],s,
-[^P].[0w],P,[0ws],P,
-q.[etp].[etP].
-[qs].[et],d,[etf].
-8.[0ws].[0wd].
-[80wf].g,j,g,
-[qf].[et].[et].
-8.[et],g,[etj],f,
-[9d].[et],g,[etj],z,
-[8x].[et].[et],z,
-[7c].[9qwx].[9qw],z,
-[7j].[9qwk].[9qwz],zx
-[7c].[9qw].[9qw],c,x,
-[7z].[9qw],c,[9qwv],c
-[0wtx]|
-[9wt].x.v.x.
-[80wl].l.x.l.
-[0w^J],l,z,x,v,b.
-[8B]mBm[0wB]BmB[0wB]mBm
-[5B].[0w].[0w].
-[8B].[0wb].[0w],h,
-[5z].[0wj].[0wh].
-[4j].[qe].[qe].
-[8g].[qe].[qe].
-[4j].[qeh].[qe],g,
-[2j].[qrG].[qrd].
-[7a].[qrL].z,Z,x,
-c,C,v,V,b,B,
-[9B],b,[qrV],v,C,c,
-x,Z,z,L,l,a/
-[0wtf].h.d.
-f.P.a.
-[etus]..
-l,z,x,c.v.b.c.
-[qx].[et].,.
-8.[et],c,b,x,
-[9z].[et],z,c,b,
-[8m].[et].c,,,
-[7b].[wrv]..z,
-[5b].[wrv].x,c.
-[7z].[wr].
-9.[wr],c,v,c,
-[0x].[wt].
-9.[wt],x,v,x,
-[8l].[0w],l,x,l,
-[^P].,.
-[qet].p,j,P,J,s,
-l,d,z,f,x.
-[80w].s,l,d,z,f.
-x.g.j.g.
-[qf].[et].[et].
-8.[et].[et].
-9.[et].[et].,.
-8.[et].g.j.g.
-f.,.i.u.
-i.,.
-g.
-j.g.
-[qetf]|/
-[0et].,g.,j,.f,.
-[qetd],.d,.g,.d,.
-[(ets],.a,.,,.,,.
-[9wrj],.h,.d,.,,.
-[9wj].,h.,g.,.,
-[9wrd]|/
-[9w].,g.,h.,g.,
-[0wtf]|/
-[9wt].,f.,h.,f.,
-[80ws].,s.,f.,s.,
-[0w^P]|/
-[qet].,p.,P.,
-s/,d.f.,
-[0wt].,s.,d.,
-f|/
-[pg]|/
-[pf]|/
-[pg]|/
-[pf].,c.,b.,c.,
-[pgx]|/
-[pf].,c.,b.,x.,
-[pgz].,z.,c.,z.,
-[Ypsl].,z.,,.,,.
-[ryob].,v.,z.,,.
-[eyob].,v.,c.,,.
-[wryz]|/
-[qry].,c.,v.,c.,
-[sfx]|/
-s.,x.,v.,x.,
-[Posl].,l.,x.,l.,
-[oPJ]|/
-[tip].,j.,J.,
-l/,z.x.,
-[wtu].,l.,z.,
-x.,c.,b.,c.,
-[qetm]|/
-[qetu]|/
-[qet]|/
-[qetu]|/
-[8qeti]|/`,
-  Damned: `[k30].f,,a,,k,,f,,a,,k,,f,,k,,f,,a,,k,,f,,a,,k,,f,,
-[l81].f,,s,,l,,f,,s,,l,,f,,z,,f,,s,,l,,f,,s,,l,,f,,
-[k30].f,,a,,k,,f,,a,,k,,f,,k,,f,,a,,k,,f,,a,,k,,f,,
-[l81].f,,s,,l,,f,,s,,l,,f,,z,,f,,s,,l,,f,,s,,l,,f,,
-[xk].f,,a,,k,,f,,a,,k,,f,,[nk].f,,a,,k,,f,,a,,k,,f,,
-[ml].f,,s,,l,,f,,s,,l,,f,,z,,f,,s,,l,,f,,s,,l,,f,,
-[xk].f,,a,,k,,f,,a,,k,,f,,[nk].f,,a,,k,,f,,a,,k,,f,,
-[lb].f,,s,,l,,f,,s,,l,,f,,z,,f,,s,,l,,f,,s,,l,,f,,
-[xk].f,,a,,k,,f,,a,,k,,f,,[nk].f,,a,,k,,f,,a,,k,,f,,
-[ml].f,,s,,l,,f,,s,,l,,f,,z,,f,,s,,l,,f,,s,,l,,f,,
-[xk].f,,a,,k,,f,,a,,k,,f,,[nk].f,,a,,k,,f,,a,,k,,f,,
-[lb].f,,s,,l,,f,,s,,l,,f,,z,,f,,s,,l,,f,,s,,l,,
-h,,j,,J,,h,,d,,J,,h,,d,,J,,h,,J,,h,,d,,J,,h,,d,,J,,h,,k,,h,,f,,k,,h,,f,,k,,h,,
-[xk].h,,f,,[zk].h,,f,,[nk].h,,
-[JB].h,,d,,J,,h,,d,,J,,h,,J,,h,,d,,J,,h,,d,,J,,h,,k,,h,,f,,k,,h,,f,,k,,h,,
-[xk].h,,f,,[zk].h,,f,,k,,h,,J,,h,,d,,J,,h,,d,,J,,h,,
-J,,G,,d,,J,,G,,d,,J,,G,,J,,G,,S,,J,,G,,S,,J,,G,,d,,
-J,,G,,d,,J,,G,,S,,L,,J,,G,,z,,J,,G,,L,,J,,G,,z,,J,,
-G,,L,,J,,G,,L,,J,,G,,L,,J,,G,,L,,J,,G,,L,,J,,G,,L,,`,
-  Unforgiven: `e||
-[u92]. y,e,u,y,e,u,y,e,u,y,e,i,y,e.
-[u92]. y,e,u,y,e,u,y,e,u,y,e,i,y,e.
-[u92]. y,e,u,y,e,u,y,e,u,y,e,i,y,e.
-[u92]. y,e,u,y,e,u,y,e,u,y,e,i,y,e.
-[ye92]|y.u.[ie].u,y,[ie].u,y,e,
-[ue92]|y,e,y,u,[ie].u,y,i,u,y,e,
-[ye92]|y,u,[ie].u,y,[ie].u,y,e,
-[ue92]|y,e,y, u,[ie].u,y,i,u,y,e,
-[y92]|e,y, u, [qi4]| e,t,i, i,
-[i81]|u,t, w.[t60].,t,y, u,
-[ye92]|y,u,y/[tqi4]|p|
-[tp81].ou|u [eT6]|y,u,
-[y92]|y,e,u,y,e,u,y,e,u,y,e,i,y,e.
-[u92].y,e,u,y,e,u,y,e,u,y,e,,i.
-[oe92].i,[ue92].i,[ut6]|[e6].[so],
-[wso5].[oa].[woa5].[yi].[yi92]`,
-};
-
 const ghostPlayTimeContainer = document.getElementById("ghost-play-time");
 const pianoNotes = document.querySelectorAll(".note");
 const ghostPlayButton = document.getElementById("ghost-play-button");
 const ghostPlayInput = document.getElementById("ghost-play-input");
+const makeSheetButton = document.getElementById("make-sheet-button");
 
 function safePlay(sound) {
   let playPromise = sound.play();
@@ -443,6 +250,10 @@ for (const note of pianoNotes) {
     }, 2000);
   });
 }
+
+makeSheetButton.addEventListener("click", () => {
+    window.location.href='/user/ghostplay/create?text=' + ghostPlayInput.value
+})
 
 window.addEventListener("keydown", (Event) => {
   if (!Event.repeat && acceptedPianoKeys.includes(Event.code)) {
@@ -579,25 +390,28 @@ ghostPlayButton.addEventListener("click", () => {
 
     if (timings.length > 0) {
       totalTime = timings.reduce((acc, curr) => acc + curr);
-      currentTime = totalTime
+      currentTime = totalTime;
       const autoStop = setTimeout(() => {
         ghostPlayButton.innerText = "Play";
-        ghostPlayTimeContainer.innerText = "--:--"
-      }, totalTime + 100)
-      timeouts.push(autoStop)
-      updateTime(currentTime)
+        ghostPlayTimeContainer.innerText = "--:--";
+      }, totalTime + 100);
+      timeouts.push(autoStop);
+      updateTime(currentTime);
+
+      let time = 0;
 
       for (let i = 0; i < timings.length; i++) {
+        time += timings[i];
         const timeout = setTimeout(
           () => {
             for (const char of notes[i]) {
               const noteData = ghostPlayKeyTranslator[char];
               play(noteData?.keyCode, noteData?.isShifted);
             }
-            currentTime -= timings[i]
-            updateTime(currentTime)
+            currentTime -= timings[i];
+            updateTime(currentTime);
           },
-          timings.slice(0, i + 1).reduce((acc, curr) => acc + curr)
+          time
         );
         timeouts.push(timeout);
       }
@@ -607,6 +421,6 @@ ghostPlayButton.addEventListener("click", () => {
       clearTimeout(timeout);
     };
     ghostPlayButton.innerText = "Play";
-    ghostPlayTimeContainer.innerText = "--:--"
+    ghostPlayTimeContainer.innerText = "--:--";
   }
 })

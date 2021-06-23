@@ -23,6 +23,8 @@
 
     <div>
         <h4><a th:href="@{/user/play(id=${sheet.id})}">Play This Sheet</a></h4>
+        <h5><a th:href="@{/user/ghostplay/{id}/edit(id=${sheet.id})}">Edit This Sheet</a></h5>
+        <h5><a th:href="@{/user/ghostplay/{id}/delete(id=${sheet.id})}">Delete This Sheet</a></h5>
     </div>
 </div>
 </body>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Notely</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link th:href="@{/styles/home.css}" rel="stylesheet">
     <link th:href="@{/styles/main_navbar.css}" rel="stylesheet">
     <script th:src="@{/js/home.js}" defer></script>
@@ -85,6 +86,7 @@
             rows="16"
             cols="72"
             th:text="${sheetText}"
+            autocomplete="on"
     ></textarea>
     <div id="instructions">
         <ul>
@@ -99,6 +101,7 @@
 </div>
 <div class="center">
     <button id="ghost-play-button">Play</button>
+    <button id="make-sheet-button">Make Into Sheet</button>
 </div>
 </body>
 </html>
