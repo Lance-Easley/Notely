@@ -14,7 +14,7 @@
 	<name>Notely</name>
 	<description>Social site for creating, playing, and sharing piano music</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
