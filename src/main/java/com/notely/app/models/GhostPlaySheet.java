@@ -16,7 +16,7 @@ public class GhostPlaySheet {
     @Column(name = "author_id", nullable = false)
     private long authorId;
 
-    @Column(name = "text_content", nullable = false)
+    @Column(name = "text_content", nullable = false, columnDefinition="TEXT")
     private String textContent;
 
     @Column(name = "is_public", nullable = false)
