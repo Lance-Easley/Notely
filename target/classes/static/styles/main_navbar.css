@@ -1,0 +1,63 @@
+nav {
+    background-color: #0044FF;
+    color: white;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+}
+
+.nav-section a, .anon-section a, .auth-section a {
+    background-color: #0044FF;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+    margin: 0;
+}
+
+.anon-section a, .auth-section a {
+    font-size: 1rem;
+    padding 1.1rem 1rem !important;
+}
+
+nav a:hover {
+    background-color: #000000;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.5s;
+}
+
+nav h2 {
+    padding: 0 1rem;
+    font-size: 1.75rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav p {
+    color: white;
+    margin: 0 1rem;
+}
+
+nav b {
+    color: white;
+    margin: 0;
+}
+
+.auth-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

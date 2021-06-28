@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sheet Created</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link th:href="@{/styles/main_navbar.css}" rel="stylesheet">
+</head>
+<body>
+<section th:replace="fragments/main_navbar.html"></section>
+<div class="container text-center">
+    <h3>Your Sheet Has Been Created!</h3>
+    <h4><a th:href="@{/user/ghostplay}">View Sheets</a></h4>
+</div>
+
+</body>
+</html>
