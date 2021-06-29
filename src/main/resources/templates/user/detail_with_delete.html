@@ -13,8 +13,9 @@
 <section th:replace="fragments/main_navbar.html"></section>
 <div class="container text-center" th:object="${viewedUser}">
     <h1 th:text="${viewedUser.firstName} + ' ' + ${viewedUser.lastName}"></h1>
+    <h5><a th:href="@{/user/delete_account}">Delete Account</a></h5>
     <br>
-    <p>User's Sheets:</p>
+    <p>User's Sheets</p>
     <div th:object="${listSheets}">
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">

@@ -76,6 +76,10 @@ public class AppController {
 
             model.addAttribute("listSheets", ghostPlayService.getSheetsByAuthorId(id, userDetails.getId()));
 
+            if (user.getId() == userDetails.getId()) {
+                return "user/detail_with_delete";
+            }
+
             return "user/detail";
         }
 
@@ -112,7 +116,7 @@ public class AppController {
     @GetMapping("user/ghostplay/create")
     public String createSheet(@RequestParam(name = "text", required = false) String textCont, Model model) {
         GhostPlaySheet sheet = new GhostPlaySheet();
-        sheet.setTextContent(textCont);
+        sheet.setTextContent(textCont.replace("_", " "));
 
         model.addAttribute("sheet", sheet);
 
