@@ -116,7 +116,11 @@ public class AppController {
     @GetMapping("user/ghostplay/create")
     public String createSheet(@RequestParam(name = "text", required = false) String textCont, Model model) {
         GhostPlaySheet sheet = new GhostPlaySheet();
-        sheet.setTextContent(textCont.replace("_", " "));
+        if (textCont != null) {
+            sheet.setTextContent(textCont.replace("_", " "));
+        } else {
+            sheet.setTextContent("");
+        }
 
         model.addAttribute("sheet", sheet);
 
