@@ -252,7 +252,7 @@ for (const note of pianoNotes) {
 }
 
 makeSheetButton.addEventListener("click", () => {
-    window.location.href='/user/ghostplay/create?text=' + ghostPlayInput.value.replace(" ", "_")
+    window.location.href='/user/ghostplay/create?text=' + encodeURIComponent(ghostPlayInput.value)
 })
 
 window.addEventListener("keydown", (Event) => {
