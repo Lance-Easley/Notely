@@ -14,6 +14,9 @@ public interface GhostPlaySheetsRepository extends CrudRepository<GhostPlaySheet
 
     public List<GhostPlaySheet> findByAuthorId(long id);
 
+    @Query("SELECT g FROM GhostPlaySheet g WHERE g.title LIKE %?1%")
+    public List<GhostPlaySheet> searchAll(String title);
+
     public GhostPlaySheet findByIsPublic(boolean isPublic);
 
     public long deleteById(long id);

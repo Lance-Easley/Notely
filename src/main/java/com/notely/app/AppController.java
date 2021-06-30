@@ -107,8 +107,16 @@ public class AppController {
     }
 
     @GetMapping("user/ghostplay")
-    public String listSheets(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
-        model.addAttribute("listSheets", ghostPlayService.getAllFilteredSheets(userDetails.getId()));
+    public String listSheets(
+            @AuthenticationPrincipal CustomUserDetails userDetails,
+            @RequestParam(value = "search", required = false) String search,
+            Model model) {
+
+        if (search != null) {
+            model.addAttribute("listSheets", ghostPlayService.getAllFilteredSheetsSearch(userDetails.getId(), search));
+        } else {
+            model.addAttribute("listSheets", ghostPlayService.getAllFilteredSheets(userDetails.getId()));
+        }
 
         return "ghostplay/list";
     }
@@ -162,6 +170,7 @@ public class AppController {
                 if (sheet.getAuthorId() == userDetails.getId()) {
                     return "ghostplay/detail_with_edit";
                 }
+
                 return "ghostplay/detail";
             }
         }

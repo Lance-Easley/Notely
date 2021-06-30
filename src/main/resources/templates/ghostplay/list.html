@@ -14,6 +14,12 @@
 <div class="container text-center">
     <div>
         <h1>List of Sheets</h1>
+        <form th:action="@{/user/ghostplay}" class="input-group mb-3">
+            <input th:name="search" type="text" class="form-control" placeholder="Search By Title" aria-label="Search By Title" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </div>
+        </form>
     </div>
 
     <div>

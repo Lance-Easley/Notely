@@ -43,6 +43,14 @@ public class GhostPlaySheetsDetailsService {
         return listSheets;
     }
 
+    public List<GhostPlaySheet> getAllFilteredSheetsSearch(long loggedId, String search) {
+        List<GhostPlaySheet> listSheets = ghostPlayRepo.searchAll(search);
+
+        listSheets.removeIf(sheet -> !sheet.getIsPublic() && sheet.getAuthorId() != loggedId);
+
+        return listSheets;
+    }
+
     public void saveSheet(GhostPlaySheet sheet, long authorId) {
         sheet.setAuthorId(authorId);
         ghostPlayRepo.save(sheet);
