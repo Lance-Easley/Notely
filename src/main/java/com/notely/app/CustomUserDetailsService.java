@@ -43,6 +43,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         return userRepo.findById(id);
     }
 
+    public List<User> searchByName(String search) {
+        return userRepo.searchUsers(search);
+    }
+
     public void deleteByEmail(String email) {
         User user = userRepo.findByEmail(email);
 

@@ -56,8 +56,15 @@ public class AppController {
     }
 
     @GetMapping("/user/users")
-    public String listUsers(Model model) {
-        model.addAttribute("listUsers", userService.getAllUsers());
+    public String listUsers(
+            @RequestParam(value = "search", required = false) String search,
+            Model model) {
+
+        if (search != null) {
+            model.addAttribute("listUsers", userService.searchByName(search));
+        } else {
+            model.addAttribute("listUsers", userService.getAllUsers());
+        }
 
         return "user/users";
     }
