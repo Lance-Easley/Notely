@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
 
 @Controller
@@ -127,7 +127,12 @@ public class AppController {
     public String createSheet(@RequestParam(name = "text", required = false) String textCont, Model model) {
         GhostPlaySheet sheet = new GhostPlaySheet();
         if (textCont != null) {
-            sheet.setTextContent(URLDecoder.decode(textCont, StandardCharsets.UTF_8));
+            try {
+                sheet.setTextContent(new URL(textCont).toString());
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                sheet.setTextContent(e.getMessage().replace("no protocol: ", ""));
+            }
         } else {
             sheet.setTextContent("");
         }
