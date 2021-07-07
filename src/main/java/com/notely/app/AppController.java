@@ -247,6 +247,6 @@ public class AppController {
     public String sheetDeleteSuccess(@PathVariable("id") long id, GhostPlaySheet sheet) {
         ghostPlayService.deleteSheet(sheet);
 
-        return "ghostplay/edit_success";
+        return "ghostplay/delete_success";
     }
 }
