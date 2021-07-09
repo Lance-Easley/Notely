@@ -5,13 +5,22 @@
     <title>Welcome to Notely</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link th:href="@{/styles/main_navbar.css}" rel="stylesheet">
+    <link th:href="@{/styles/home.css}" rel="stylesheet">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<section th:replace="fragments/main_navbar.html"></section>
-<div class="container text-center">
-    <h1>Welcome to Notely</h1>
-</div>
+    <section th:replace="fragments/main_navbar.html"></section>
+    <div class="container text-center">
+        <h1>Welcome to Notely</h1>
+        <br>
+        <div>
+            <h5>Notely is the best ad-free piano website on the interwebs!</h5>
+            <br>
+            <p>Once you log in, you can play the piano, have the piano play for you, and save your artistic masterpieces.</p>
+            <p>Feeling bored? Browse the catalogue of music by going to the Ghostplay Sheets page.</p>
+            <p>You can also browse a user's Ghostplay sheets by visiting the View Artists page.</p>
+        </div>
+    </div>
 </body>
 </html>
