@@ -1,7 +1,7 @@
 # Notely
 
 This is my Spring Unit Project for Base Camp Coding Academy.
-It is built off of an idea that my partner and I had during our [Java Unit Project](https://github.com/BaseCampCoding/Seth-and-Lance-Unit-5-Project), named "Muscially".
+It is built off of an idea that my partner and I had during our [JavaScript Unit Project](https://github.com/BaseCampCoding/Seth-and-Lance-Unit-5-Project), named "Muscially".
 We were adding default music sheets for ghost play, the feature that played the piano for you, and wondered if we could have users submit their own sheets.
 Since that project lacked a back-end, it would not be easily possible to store users and their sheets.
 With Spring, I can have a back-end, so I decided to run with that idea.
