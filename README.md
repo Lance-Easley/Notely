@@ -34,7 +34,7 @@ If left unchecked, only you will be able to see the sheet.
 Otherwise, everyone else will be able to see the sheet.
 Once done, press `Create Sheet` to save it.
 
-To view all ghostplay sheets, press `Ghostlay Sheets` in the navbar.
+To view all ghostplay sheets, press `Ghostplay Sheets` in the navbar.
 Alternatively, after you create a sheet, there will be a link to view all sheets.
 This page will show you all of the public sheets, as well as your private ones.
 Clicking on one of them will take you to the sheet's detail page. 
