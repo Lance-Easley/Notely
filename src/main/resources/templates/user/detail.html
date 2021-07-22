@@ -19,13 +19,11 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
             <tr>
-                <th>ID</th>
                 <th>Title</th>
             </tr>
             </thead>
             <tbody>
             <tr class="list-row" th:each="sheet: ${listSheets}">
-                <td><a th:text="${sheet.id}" th:href="@{/user/ghostplay/{id}(id=${sheet.id})}"></a></td>
                 <td><a th:text="${sheet.title}" th:href="@{/user/ghostplay/{id}(id=${sheet.id})}"></a></td>
             </tr>
             </tbody>
